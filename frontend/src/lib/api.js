@@ -1,7 +1,12 @@
 import axios from "axios";
 
+const defaultApiBaseUrl =
+  typeof window !== "undefined" && window.location.hostname === "localhost"
+    ? "http://localhost:3000"
+    : "https://veritask.onrender.com";
+
 const api = axios.create({
-  baseURL: import.meta.env.VITE_API_BASE_URL || "http://localhost:3000",
+  baseURL: import.meta.env.VITE_API_BASE_URL || defaultApiBaseUrl,
   withCredentials: true,
 });
 

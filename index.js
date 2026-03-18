@@ -3,14 +3,23 @@ import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import routes from "./backend/routes/index.js";
-import { PORT } from "./backend/config/env.js";
+import { PORT, getAllowedOrigins } from "./backend/config/env.js";
 
 mongoose.connect(process.env.MONGODB_URI);
 
 const app = express();
+const allowedOrigins = getAllowedOrigins();
+
+app.set("trust proxy", 1);
 
 app.use(cors({
-    origin: process.env.FRONTEND_URL || "http://localhost:5173",
+    origin(origin, callback) {
+        if (!origin || allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        }
+
+        return callback(new Error(`CORS blocked for origin: ${origin}`));
+    },
     credentials: true
 }));
 app.use(express.json());
