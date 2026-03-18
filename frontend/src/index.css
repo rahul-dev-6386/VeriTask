@@ -1,0 +1,64 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Sora:wght@600;700&display=swap");
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  color-scheme: light;
+  --page-bg: #f6f1e8;
+  --panel: rgba(255, 255, 255, 0.72);
+  --panel-soft: rgba(255, 251, 245, 0.72);
+  --text-strong: #18212b;
+  --text-muted: #4b5a68;
+  --text-subtle: #7a8b99;
+  --border-soft: rgba(24, 33, 43, 0.08);
+  --border-strong: rgba(24, 33, 43, 0.18);
+  --accent: #e66a34;
+  --accent-strong: #cf5622;
+  --accent-soft: rgba(230, 106, 52, 0.14);
+  --accent-shadow: rgba(230, 106, 52, 0.28);
+}
+
+.dark {
+  color-scheme: dark;
+  --page-bg: #0c1118;
+  --panel: rgba(16, 24, 34, 0.8);
+  --panel-soft: rgba(255, 255, 255, 0.04);
+  --text-strong: #ecf3fb;
+  --text-muted: #afbdcb;
+  --text-subtle: #7e90a1;
+  --border-soft: rgba(236, 243, 251, 0.08);
+  --border-strong: rgba(236, 243, 251, 0.16);
+  --accent: #f17848;
+  --accent-strong: #ff8d61;
+  --accent-soft: rgba(241, 120, 72, 0.18);
+  --accent-shadow: rgba(241, 120, 72, 0.24);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--page-bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  font-family: "Manrope", sans-serif;
+  background: var(--page-bg);
+  color: var(--text-strong);
+}
+
+body::selection {
+  background: var(--accent);
+  color: white;
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.font-display {
+  font-family: "Sora", sans-serif;
+}
